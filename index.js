@@ -1,3 +1,5 @@
+const myfs = require('fs');
+
 for (var i = 1; i <= 10; i++) {
     var notPrime = false;
     for(var j = 2; j <= (i/2); j++){
@@ -8,6 +10,9 @@ for (var i = 1; i <= 10; i++) {
         }
     }
     if(!notPrime){
+        myfs.appendFile('primes.txt', i + '\n', (e)=>{
+            if(e)throw e;
+        })
         console.log(i);
     }
 }
